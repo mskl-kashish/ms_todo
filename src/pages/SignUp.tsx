@@ -1,4 +1,5 @@
 import { useState, FormEvent } from "react"; // Import FormEvent for event type
+import { Link } from "react-router-dom";
 import { supabase } from "../client";
 
 type UserData = {
@@ -71,9 +72,12 @@ const Signup = () => {
           </button>
           <h2 className="heading__small textAlign__center">
             Already Have an account ?{" "}
-            <span className="cursor__pointer" style={{ color: "blue" }}>
-              SignIn
-            </span>
+            <Link to="/login">
+              {" "}
+              <span className="cursor__pointer" style={{ color: "blue" }}>
+                SignIn
+              </span>
+            </Link>
           </h2>
         </form>
       </div>

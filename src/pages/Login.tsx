@@ -1,10 +1,12 @@
 import { FormEvent, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { supabase } from "../client";
 type userData = {
   email: string;
   password: string;
 };
 const Login = () => {
+  const navigate = useNavigate();
   //
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -21,6 +23,7 @@ const Login = () => {
       if (error) {
         console.error("Error signing up:", error);
       } else {
+        navigate("/");
         console.log("User signed up successfully:", data);
       }
     } catch (err) {
@@ -68,9 +71,12 @@ const Login = () => {
           </button>
           <h2 className="heading__small textAlign__center">
             Don't Have an account ?{" "}
-            <span className="cursor__pointer" style={{ color: "blue" }}>
-              SignUp
-            </span>
+            <Link to="/signup">
+              {" "}
+              <span className="cursor__pointer" style={{ color: "blue" }}>
+                SignUp
+              </span>
+            </Link>
           </h2>
         </form>
       </div>
