@@ -24,6 +24,7 @@ const Login = () => {
         console.error("Error signing up:", error);
       } else {
         navigate("/");
+        localStorage.setItem("access_token", data?.session?.access_token);
         console.log("User signed up successfully:", data);
       }
     } catch (err) {

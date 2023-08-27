@@ -1,5 +1,5 @@
 import { useState, FormEvent } from "react"; // Import FormEvent for event type
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { supabase } from "../client";
 
 type UserData = {
@@ -8,6 +8,7 @@ type UserData = {
 };
 
 const Signup = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
@@ -26,6 +27,7 @@ const Signup = () => {
         console.error("Error signing up:", error);
       } else {
         console.log("User signed up successfully:", data);
+        navigate("/login");
       }
     } catch (err) {
       console.error("Error signing up:", err);
